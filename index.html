@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <meta charset="UTF-8" />
+    <title>常州中电-变更管理</title>
+    <!--preload-links-->
+    <!--app-context-->
+    <style>
+        html,
+        body,
+        #app {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: rgb(246, 248, 251);
+            font-size: 16px;  /* 基础字体大小 */
+        }
+
+        .chromeframe {
+            margin: 0.2em 0;
+            background: #ccc;
+            color: #000;
+            padding: 0.2em 0;
+        }
+
+        #loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;  /* 使用视口单位保证高度自适应 */
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #loader {
+            display: block;
+            width: 10rem;  /* 使用 rem 单位 */
+            height: 10rem;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #FFF;
+            animation: spin 2s linear infinite;
+            z-index: 1001;
+            margin-bottom: 1rem;
+        }
+
+        #loader:before,
+        #loader:after {
+            content: "";
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            border-top-color: #FFF;
+            animation: spin 3s linear infinite;
+        }
+
+        #loader:after {
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        #loader-wrapper .load_title {
+            font-family: 'Open Sans';
+            color: #FFF;
+            font-size: 1rem;  /* 使用 rem 单位 */
+            text-align: center;
+            z-index: 9999999999999;
+            opacity: 1;
+            line-height: 30px;
+        }
+
+        #loader-wrapper .load_title span {
+            font-weight: normal;
+            font-style: italic;
+            font-size: 0.875rem;  /* 使用 rem 单位 */
+            color: #FFF;
+            opacity: 0.5;
+        }
+
+        .loaded #loader-wrapper .loader-section.section-left {
+            transform: translateX(-100%);
+            transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .loaded #loader-wrapper .loader-section.section-right {
+            transform: translateX(100%);
+            transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+        }
+
+        .loaded #loader {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .loaded #loader-wrapper {
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: transform 0.3s 1s ease-out;
+        }
+
+        .no-js #loader-wrapper {
+            display: none;
+        }
+
+        /* Media Queries for responsive design */
+        @media (max-width: 768px) {
+            #loader-wrapper {
+                width: 100%;
+            }
+
+            #loader {
+                width: 8rem;
+                height: 8rem;
+            }
+
+            .load_title {
+                font-size: 0.875rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #loader-wrapper {
+                width: 100%;
+            }
+
+            #loader {
+                width: 12rem;
+                height: 12rem;
+            }
+
+            .load_title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+            <div class="load_title">正在加载系统资源，请耐心等待</div>
+        </div>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

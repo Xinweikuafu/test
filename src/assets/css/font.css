@@ -1,0 +1,6 @@
+@font-face {
+    /*给字体命名*/
+    font-family: 'DemiLight';
+    /*引入字体文件*/
+    src: url('./NotoSansHans-DemiLight.ttf');
+}
